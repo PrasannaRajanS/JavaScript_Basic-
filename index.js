@@ -648,24 +648,24 @@ const courses = [
 const course = courses.find(courses => courses.nameIs === 'Prasanna')
 console.log(course);
 
-const numberIsArr = [1,2,3,4,5]
+const numberIsArr = [1, 2, 3, 4, 5]
 
 // Remove the end of the array
 const last = numberIsArr.pop();
 console.log(numberIsArr);
 
-const numberIsArrOne = [1,2,3,4,5]
+const numberIsArrOne = [1, 2, 3, 4, 5]
 // Remove the Beginning of the array
 const first = numberIsArrOne.shift();
 console.log(numberIsArrOne);
 
-const numberIsArrTwo = [1,2,3,4,5]
+const numberIsArrTwo = [1, 2, 3, 4, 5]
 // Remove the Middle of the array
-numberIsArrTwo.splice(2,2)
+numberIsArrTwo.splice(2, 2)
 console.log(numberIsArrTwo);
 
 
-let EmptArr = [1,2,3,4,5]
+let EmptArr = [1, 2, 3, 4, 5]
 let AsignArr = EmptArr
 // solution 1
 EmptArr = []
@@ -674,28 +674,89 @@ EmptArr = []
 EmptArr.length = 0
 
 // solution 3
-EmptArr.splice(0,EmptArr.length)
+EmptArr.splice(0, EmptArr.length)
 
 console.log(EmptArr);
 console.log(AsignArr);
 
-const firstNumber = [1,2,3]
-const SecondNumber = [4,5,6]
+const firstNumber = [1, 2, 3]
+const SecondNumber = [4, 5, 6]
 
 const combined = firstNumber.concat(SecondNumber)
-console.log('combined',combined);
+console.log('combined', combined);
 
-const spreadArrOne = [4,5,6]
-const spreadArrTwo = [7,8,9]
+const spreadArrOne = [4, 5, 6]
+const spreadArrTwo = [7, 8, 9]
 
-const UsingSpreadArr = [...spreadArrOne,'a',...spreadArrTwo,'b']
-const CombineSpreadArr = {...UsingSpreadArr}
+const UsingSpreadArr = [...spreadArrOne, 'a', ...spreadArrTwo, 'b']
+const CombineSpreadArr = { ...UsingSpreadArr }
 
 console.log(CombineSpreadArr);
 
-const numbersOne = [1,2,3]
+const numbersOne = [1, 2, 3]
 
-for(let numbers of numbersOne)
-        console.log(numbers);
-        
-numbersOne.forEach((numbers,index) => console.log(index,numbers))
+for (let numbers of numbersOne)
+    console.log(numbers);
+
+numbersOne.forEach((numbers, index) => console.log(index, numbers))
+
+const numbersAre = [1, -1, 2, 3, 4]
+console.log(numbersAre);
+
+const sumIs = numbersAre.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue
+})
+
+console.log(sumIs);
+
+// Hoisting 
+host("Prasanna")
+
+function host(name) {
+    console.log(name);
+}
+
+// Arguments
+function SumVal() {
+    let total = 0
+    for (let value of arguments)
+        total += value
+    return total;
+}
+
+console.log(SumVal(1, 2, 3, 4, 5, 10));
+
+
+function DefaultPram(TotalFee, price = 3.5, year) {
+    return TotalFee * price/100*year
+}
+
+console.log(DefaultPram(10000,undefined,5));
+
+// Gettter and Setter
+const person = {
+    firstName : 'Prasanna',
+    lastName : 'Rajan',
+    get fullName(){
+        return `${person.firstName} ${person.lastName}`
+    },
+    set fullName(value){
+        if(typeof value !== 'string')
+            throw new Error("Value is not a string");
+            
+        const parts = value.split(' '); 
+        if(parts.length !== 2)
+            throw new Error("Enter First Name and Last Name");
+                   
+        this.firstName = parts[0];
+        this.lastName = parts[1];
+    }
+}
+
+try {
+    person.fullName = "Mike Tyson"
+} catch (error) {
+    alert(error)
+}
+console.log(person);
+
